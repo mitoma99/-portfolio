@@ -6,9 +6,27 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
+  <header>
+    <% if customer_signed_in? %>
+      <div>マイページ</div>
+      <div>つぶやき</div>
+      <div>離乳食</div>
+      <div>ログアウト</div>
+    <% elsif admin_signed_in? %>
+      <div>会員一覧</div>
+      <div>つぶやき一覧</div>
+      <div>離乳食</div>
+      <div>ログアウト</div>
+    <% else %>
+      <div>アバウト</div>
+      <div>新規登録</div>
+      <div>ログイン</div>
+    <% end %>
+  </header>
 
   <body>
     <%= yield %>
