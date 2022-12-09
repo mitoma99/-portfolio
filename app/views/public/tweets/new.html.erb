@@ -1,1 +1,11 @@
 <h1>つぶやき投稿</h1>
+
+<%= form_with model: @tweet, url: new_tweet_path, method: :post do |f| %>
+
+  <%= f.text_area :content %>
+
+  <%= f.submit '投稿' %>
+
+<% end %>
+
+<%= link_to "ここ", new_customer_session_path %>
