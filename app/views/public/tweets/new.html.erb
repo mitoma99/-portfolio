@@ -1,11 +1,16 @@
-<h1>つぶやき投稿</h1>
+<div class = "container ml-auto">
+  <h1>つぶやき投稿</h1>
 
-<%= form_with model: @tweet, url: new_tweet_path, method: :post do |f| %>
-
-  <%= f.text_area :content %>
-
-  <%= f.submit '投稿' %>
-
-<% end %>
+  <div class="form-group row">
+    <div class="col text-center">
+      <%= form_with model: @tweet, url: tweets_path, method: :post do |f| %>
+        <%= f.text_area :content %><br>
+        <%= f.submit '投稿' %>
+      <% end %>
+    </div>
+  </div>
 
 <%= link_to "ここ", new_customer_session_path %>
+
+
+</div>

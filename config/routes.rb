@@ -18,7 +18,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 
 scope module: 'public' do
-    resources :tweets, only: [:new,:create,:index,:show,:update,:destroy,:create]
+    root to: 'homes#top'
+    resources :tweets, only: [:new,:create,:index,:show,:update,:destroy,:create] do
+      resources :comments, only: [:create, :destroy]
+    end
     resources :customers, only: [:show, :edit, :update]
   end
 

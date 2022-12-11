@@ -11,24 +11,64 @@
   </head>
 
   <header>
-    <% if customer_signed_in? %>
-      <div>マイページ</div>
-      <div>つぶやき</div>
-      <div>離乳食</div>
-      <div>ログアウト</div>
-    <% elsif admin_signed_in? %>
-      <div>会員一覧</div>
-      <div>つぶやき一覧</div>
-      <div>離乳食</div>
-      <div>ログアウト</div>
-    <% else %>
-      <div>アバウト</div>
-      <div>新規登録</div>
-      <div>ログイン</div>
-    <% end %>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #ffd700">
+      <div class="container">
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+
+        <% if customer_signed_in? %>
+          <div class="mr-5 mt-3">
+            <p>
+              ようこそ、<%= current_customer.name %>さん!
+            </p>
+          </div>
+          <div>マイページ</div>
+          <div>
+            <%= link_to tweets_path,class: 'nav-link text-light' do %>
+              <button type="button" class="btn btn-light btn-sm ">つぶやき</button>
+            <% end %>
+        　</div>
+          <div>離乳食</div>
+          <div>
+            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
+              <button type="button" class="btn btn-light btn-sm ">ログアウト</button>
+            <% end %>
+        </div>
+        <% elsif admin_signed_in? %>
+          <div>会員一覧</div>
+          <div>つぶやき一覧</div>
+          <div>離乳食</div>
+          <div>
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
+              <button type="button" class="btn btn-light btn-sm">ログアウト</button>
+            <% end %>
+          </div>
+        <% else %>
+          <div>
+            <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
+              <button type="button" class="btn btn-light btn-sm mr-3">アバウト</button>
+            <% end %>
+          </div>
+          <div>
+            <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
+              <button type="button" class="btn btn-light btn-sm mr-3">新規登録</button>
+            <% end %>
+          </div>
+          <div>
+            <%= link_to new_customer_session_path,class: 'nav-link text-light' do %>
+              <button type="button" class="btn btn-light btn-sm">ログイン</button>
+            <% end %>
+          </div>
+
+        <% end %>
+        </ul>
+        </div>
+      </div>
+    </nav>
   </header>
 
-  <body>
+　<body style="background-color:#fffff0">
     <%= yield %>
   </body>
 </html>

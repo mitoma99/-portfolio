@@ -1,2 +1,27 @@
-<h1>Public::Tweets#index</h1>
-<p>Find me in app/views/public/tweets/index.html.erb</p>
+<h1>つぶやき一覧</h1>
+
+<!--カードで一覧表示-->
+<% @tweets.each do |tweet| %>
+  <div class="card border-dark mb-3" style="max-width: 25rem;">
+    <div class="card-header bg-transparent border-dark">
+      <th><%= tweet.customer.nickname %></th>
+    </div>
+    <div class="card-body text-dark">
+      <p class="card-text">
+        <%= link_to tweet_path(tweet.id) do %>
+          <%= tweet.content %>
+        <% end %>
+      </p>
+    </div>
+    <div class="card-footer bg-transparent border-dark">
+      <td>
+        <i class="far fa-comment"></i>
+        ：<%= tweet.comments.count %>
+      </td>
+      <%= tweet.created_at.strftime('%Y/%m/%d') %>
+    </div>
+  </div>
+<% end %>
+
+
+
