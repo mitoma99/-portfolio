@@ -5,6 +5,14 @@
   <div class="card border-dark mb-3" style="max-width: 25rem;">
     <div class="card-header bg-transparent border-dark">
       <th><%= tweet.customer.nickname %></th>
+      <!--削除機能（投稿ユーザーのみ）-->
+      <% if tweet.customer == current_customer %>
+        <td>
+          <%= link_to tweet_path(tweet), method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </td>
+      <% end %>
     </div>
     <div class="card-body text-dark">
       <p class="card-text">
@@ -14,11 +22,29 @@
       </p>
     </div>
     <div class="card-footer bg-transparent border-dark">
+      <!--コメント数表示-->
       <td>
         <i class="far fa-comment"></i>
         ：<%= tweet.comments.count %>
       </td>
-      <%= tweet.created_at.strftime('%Y/%m/%d') %>
+      <!--いいね表示-->
+      <td>
+        <% if tweet.favorited_by?(current_customer) %><!--いいねしている会員か確認-->
+          <p>
+            <%= link_to tweet_favorites_path(tweet), method: :delete do %>
+              ♥<%= tweet.favorites.count %>
+            <% end %>
+          </p>
+        <% else %>
+          <p>
+            <%= link_to tweet_favorites_path(tweet), method: :post do %>
+              ♡<%= tweet.favorites.count %>
+            <% end %>
+          </p>
+        <% end %>
+      </td>
+      <!--投稿日表示-->
+      <td><%= tweet.created_at.strftime('%Y/%m/%d') %></td>
     </div>
   </div>
 <% end %>
