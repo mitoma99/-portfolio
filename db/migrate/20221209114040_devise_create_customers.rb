@@ -9,6 +9,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
 
       t.string :name
       t.string :nickname
+      t.text :introduction
 
       ## Recoverable
       t.string   :reset_password_token

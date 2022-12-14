@@ -25,7 +25,7 @@ class Public::TweetsController < ApplicationController
     tweet=Tweet.find(params[:id])
     tweet.destroy
     redirect_to tweets_path
-  end 
+  end
 
   private
 

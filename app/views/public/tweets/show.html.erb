@@ -3,7 +3,9 @@
 <!--カードで表示-->
 <div class="card border-dark mb-3" style="max-width: 25rem;">
     <div class="card-header bg-transparent border-dark">
-      <th><%= @tweet.customer.nickname %></th>
+      <%= link_to customer_path(@tweet.customer.id) do %>
+        <th><%= @tweet.customer.nickname %></th>
+      <% end %>
       <!--削除機能（投稿ユーザーのみ）-->
       <% if @tweet.customer == current_customer %>
         <td>
@@ -51,7 +53,9 @@
   <% @tweet.comments.each do |comment| %>
     <div class="card border-dark mb-3" style="max-width: 18rem;">
       <div class="card-header bg-transparent border-dark">
-        <th><%= comment.customer.nickname %></th>
+        <%= link_to customer_path(comment.customer.id) do %>
+          <th><%= comment.customer.nickname %></th>
+        <% end %>
         <!--削除機能（投稿ユーザーのみ）-->
         <% if comment.customer == current_customer %>
           <td>
@@ -72,7 +76,7 @@
       </div>
     </div>
   <% end %>
-  
+
   　<!--コメント投稿-->
     <div>
       <%= form_with model: [@tweet, @comment] do |f| %>

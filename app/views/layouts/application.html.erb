@@ -20,10 +20,14 @@
         <% if customer_signed_in? %>
           <div class="mr-5 mt-3">
             <p>
-              ようこそ、<%= current_customer.name %>さん!
+              ようこそ、<%= current_customer.nickname %>さん!
             </p>
           </div>
-          <div>マイページ</div>
+          <div>
+            <%= link_to customer_path(current_customer.id),class: 'nav-link text-light' do %>
+              <button type="button" class="btn btn-light btn-sm ">マイページ</button>
+            <% end %>
+        　</div>
           <div>
             <%= link_to tweets_path,class: 'nav-link text-light' do %>
               <button type="button" class="btn btn-light btn-sm ">つぶやき</button>
@@ -36,8 +40,16 @@
             <% end %>
         </div>
         <% elsif admin_signed_in? %>
-          <div>会員一覧</div>
-          <div>つぶやき一覧</div>
+          <div>
+            <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
+              <button type="button" class="btn btn-light btn-sm ">会員一覧</button>
+            <% end %>
+        　</div>
+          <div>
+            <%= link_to admin_tweets_path,class: 'nav-link text-light' do %>
+              <button type="button" class="btn btn-light btn-sm ">つぶやき一覧</button>
+            <% end %>
+        　</div>
           <div>離乳食</div>
           <div>
             <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>

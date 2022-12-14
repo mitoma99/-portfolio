@@ -4,7 +4,9 @@
 <% @tweets.each do |tweet| %>
   <div class="card border-dark mb-3" style="max-width: 25rem;">
     <div class="card-header bg-transparent border-dark">
-      <th><%= tweet.customer.nickname %></th>
+      <%= link_to customer_path(tweet.customer.id) do %>
+        <th><%= tweet.customer.nickname %></th>
+      <% end %>
       <!--削除機能（投稿ユーザーのみ）-->
       <% if tweet.customer == current_customer %>
         <td>

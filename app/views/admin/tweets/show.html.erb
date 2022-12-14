@@ -1,0 +1,66 @@
+<h1>管理者：つぶやき詳細</h1>
+
+<!--カードで表示-->
+<div class="card border-dark mb-3" style="max-width: 25rem;">
+    <div class="card-header bg-transparent border-dark">
+      <th><%= @tweet.customer.nickname %></th>
+      <!--削除機能（管理者のため全投稿）-->
+      <td>
+        <%= link_to admin_tweet_path(@tweet), method: :delete do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </td>
+    </div>
+    <div class="card-body text-dark">
+      <p class="card-text">
+        <%= link_to tweet_path(@tweet.id) do %>
+          <%= @tweet.content %>
+        <% end %>
+      </p>
+    </div>
+    <div class="card-footer bg-transparent border-dark">
+      <!--コメント数表示-->
+      <td>
+        <i class="far fa-comment"></i>
+        ：<%= @tweet.comments.count %>
+      </td>
+      <!--いいね数表示-->
+      <td>
+
+      </td>
+      <!--投稿日表示-->
+      <td><%= @tweet.created_at.strftime('%Y/%m/%d') %></td>
+    </div>
+  </div>
+
+  <!--コメント一覧-->
+  <% @tweet.comments.each do |comment| %>
+    <div class="card border-dark mb-3" style="max-width: 18rem;">
+      <div class="card-header bg-transparent border-dark">
+        <th><%= comment.customer.nickname %></th>
+        <!--削除機能（管理者のため全投稿）-->
+        <td>
+          <%= link_to admin_tweet_comment_path(comment.tweet, comment), method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+           <% end %>
+        </td>
+      </div>
+      <div class="card-body text-dark">
+        <p class="card-text">
+          <%= comment.message %>
+        </p>
+      </div>
+
+      <div class="card-footer bg-transparent border-dark">
+        <%= comment.created_at.strftime('%Y/%m/%d') %>
+      </div>
+    </div>
+  <% end %>
+
+  　<!--コメント投稿-->
+    <!--<div>-->
+    <!--  <!%= form_with model: [@tweet, @comment] do |f| %>-->
+    <!--    <!%= f.text_area :message, rows: '2', placeholder: "コメントをここに" %>-->
+    <!--    <!%= f.submit "送信する" %>-->
+    <!--  <!% end %>-->
+    <!--</div>-->
