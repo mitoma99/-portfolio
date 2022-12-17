@@ -1,13 +1,19 @@
-<h1>つぶやき詳細</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'public/customers/info', customer: @tweet.customer %>
+    </div>
+    <div class="col-9">
+      <h1>つぶやき詳細</h1>
 
 <!--カードで表示-->
-<div class="card border-dark mb-3" style="max-width: 25rem;">
-    <div class="card-header bg-transparent border-dark">
-      <%= link_to customer_path(@tweet.customer.id) do %>
-        <th><%= @tweet.customer.nickname %></th>
-      <% end %>
+     <div class="card border-dark mb-3" style="max-width: 25rem;">
+       <div class="card-header bg-transparent border-dark">
+         <%= link_to customer_path(@tweet.customer.id) do %>
+           <th><%= @tweet.customer.nickname %></th>
+         <% end %>
       <!--削除機能（投稿ユーザーのみ）-->
-      <% if @tweet.customer == current_customer %>
+        <% if @tweet.customer == current_customer %>
         <td>
           <%= link_to tweet_path(@tweet), method: :delete do %>
             <i class="fas fa-trash-alt"></i>

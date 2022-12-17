@@ -24,6 +24,6 @@ class Public::BabyfoodsController < ApplicationController
   private
 
   def babyfood_params
-    params.require(:babyfood).permit(:title, :food, :point, :making, :image, tag_ids: [])
+    params.require(:babyfood).permit(:title, :food, :point, :making, :image, :tag_id)
   end
 end

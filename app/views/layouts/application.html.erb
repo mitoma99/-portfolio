@@ -33,7 +33,11 @@
               <button type="button" class="btn btn-light btn-sm ">つぶやき</button>
             <% end %>
         　</div>
-          <div>離乳食</div>
+          <div>
+            <%= link_to babyfoods_path,class: 'nav-link text-light' do %>
+              <button type="button" class="btn btn-light btn-sm ">離乳食</button>
+            <% end %>
+        　</div>
           <div>
             <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
               <button type="button" class="btn btn-light btn-sm ">ログアウト</button>

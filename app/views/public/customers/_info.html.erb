@@ -1,0 +1,25 @@
+<table class="table table-striped table-warning">
+  <% if customer == current_customer %>
+    <tr>
+      <th>名前</th>
+      <td><%= customer.name %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <th>ニックネーム</th>
+    <td><%= customer.nickname %></td>
+    </tr>
+  <tr>
+    <th>自己紹介</th>
+    <td><%= customer.introduction %></td>
+  </tr>
+  <% if customer == current_customer %>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= customer.email %></td>
+    </tr>
+  <% end %>
+</table>
+<% if customer == current_customer %>
+  <%= link_to "編集する", edit_customer_path(customer) %>
+<% end %>

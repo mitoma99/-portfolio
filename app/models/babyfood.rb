@@ -2,8 +2,7 @@ class Babyfood < ApplicationRecord
 
   belongs_to :customer
   has_one_attached :image
-  has_many :babyfood_tags, dependent: :destroy
-  has_many :tags, through: :babyfood_tags, dependent: :destroy
+  belongs_to :tag
 
   def get_image(width, height)
   unless image.attached?

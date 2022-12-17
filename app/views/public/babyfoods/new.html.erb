@@ -7,16 +7,16 @@
     <%= f.text_field :title %>
   </div>
 
-  <!--<div class="check_box">-->
-  　<!--%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>-->
-  <!--    <div class='form-check'>-->
-  <!--      <!%= tag.label do %>-->
-  <!--        <!%= tag.check_box %>-->
-  <!--        <!%= tag.text %>-->
-  <!--      <!% end %>-->
-  <!--    </div>-->
-  <!--  <!% end %>-->
-  <!--</div>-->
+  <div class="check_box">
+  　<%= f.collection_radio_buttons(:tag_id, Tag.all, :id, :name) do |tag| %>
+      <div class='form-check'>
+        <%= tag.label do %>
+          <%= tag.radio_button %>
+          <%= tag.text %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
   <div>
     <%= f.label :料理画像 %><br>
