@@ -15,11 +15,36 @@ class Public::BabyfoodsController < ApplicationController
   end
 
   def index
-    @babyfoods=Babyfood.all
+    @tags=Tag.all
+    @babyfoods = Babyfood.all
+    @q = Babyfood.ransack(params[:q])
+    #検索にTagのnameが入ってないか
+    if params[:name].present?
+      @babyfoods = Tag.find(params[:name]).babyfoods
+    else
+    #入っていなかったらキーワード検索をする
+      @babyfoods = @q.result(distinct: true).order("created_at desc")
+    #if文でタグ検索とキーワード検索を使い分けている
+    end
   end
 
   def edit
+    @babyfood=Babyfood.find(params[:id])
   end
+
+  def update
+    @babyfood=Babyfood.find(params[:id])
+    @babyfood.customer_id=current_customer.id
+    @babyfood.update(babyfood_params)
+    redirect_to babyfood_path(@babyfood.id)
+  end
+
+  def destroy
+    @babyfood=Babyfood.find(params[:id])
+    @babyfood.destroy
+    redirect_to babyfoods_path
+  end
+
 
   private
 

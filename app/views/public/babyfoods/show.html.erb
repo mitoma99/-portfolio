@@ -1,29 +1,49 @@
 <div class="container">
-  <h1><%= @babyfood.title %></h1>
+  <h3><%= @babyfood.title %></h3>
+  <div><%= link_to "編集する", edit_babyfood_path(@babyfood),class: "btn　mt-4 mb-3" %></div>
+  <td>
+    <%= link_to babyfood_path(@babyfood), method: :delete do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </td>
   <div class="row">
-    <div class="col-6">
-      <td><%= image_tag @babyfood.get_image(250,250) %></td><br>
-      <td><%= @babyfood.point %></td>
-    </div>
-    <div class="col-6">
-      <tr>
-        <th>
-          レシピ投稿：
-          <%= link_to customer_path(@babyfood.customer.id) do %>
-            <td><%= @babyfood.customer.nickname %></td>
-          <% end %>
-          さん
-        </th>
-      </tr><br>
-      <tr>
-        <th>【材料】</th><br>
-        <td><%=safe_join(@babyfood.food.split("\n"),tag(:br))%></td><!--投稿したままにスペースと改行をする-->
-      </tr><br>
-      <tr>
-        <th>【作り方】</th><br>
+    <div class="col-5 mt-4 mb-3">
+      <td><%= image_tag @babyfood.get_image(250,250) %></td>
 
-        <td><%=safe_join(@babyfood.making.split("\n"),tag(:br))%></td><!--投稿したままにスペースと改行をする-->
-      </tr>
+      <div class="card border-warning mb-3 mt-4 mb-3" style="max-width: 18rem;">
+        <p class="card-text">
+          <tr>
+            <th>【材料】</th><br>
+            <td><%=safe_join(@babyfood.food.split("\n"),tag(:br))%></td><!--投稿したままにスペースと改行をする-->
+          </tr>
+        </p>
+     </div>
+
+    </div>
+    <div class="col-7">
+      <div class="card border-warning mb-3 mt-4 mb-3" style="max-width: 30rem;">
+        <p class="card-text">
+          <tr>
+            <tr>
+              <td>レシピ投稿：
+                <%= link_to customer_path(@babyfood.customer.id) do %>
+              <td><%= @babyfood.customer.nickname %></td>
+              <% end %>
+              さん</td>
+            </tr><br>
+            <th>【ポイント】</th><br>
+            <td><%=safe_join(@babyfood.point.split("\n"),tag(:br))%></td><!--投稿したままにスペースと改行をする-->
+          </tr>
+        </p>
+     </div>
+     <div class="card border-warning mb-3 mt-4 mb-3" style="max-width: 30rem;">
+        <p class="card-text">
+          <tr>
+            <th>【作り方】</th><br>
+            <td><%=safe_join(@babyfood.making.split("\n"),tag(:br))%></td><!--投稿したままにスペースと改行をする-->
+          </tr>
+        </p>
+     </div>
     </div>
   </div>
 

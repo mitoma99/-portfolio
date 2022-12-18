@@ -27,8 +27,10 @@ scope module: 'public' do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
-    resources :customers, only: [:show, :edit, :update]
-    resources :babyfoods, only: [:new,:create,:index,:show,:update,:destroy,:create]
+    resources :customers, only: [:show, :edit, :update] do
+       get 'babyfoods' => 'customers#babyfoods'
+    end
+    resources :babyfoods, only: [:new,:create,:index,:show,:edit, :update,:destroy]
   end
 
 

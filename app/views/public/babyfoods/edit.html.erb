@@ -1,2 +1,49 @@
-<h1>Public::Babyfoods#edit</h1>
-<p>Find me in app/views/public/babyfoods/edit.html.erb</p>
+<div class="container">
+  <h1>離乳食レシピ投稿</h1>
+
+  <%= form_with model: @babyfood, url: babyfood_path(@babyfood.id), method: :patch do |f| %>
+    <div class="row">
+      <div class="col-5">
+        <div>
+          <%= f.label :料理名 %><br>
+          <%= f.text_field :title %>
+        </div>
+      <!--タグ付け用のラジオボタン-->
+        <div class="check_box">
+  　       <%= f.collection_radio_buttons(:tag_id, Tag.all, :id, :name) do |tag| %>
+            <div class='form-check'>
+              <%= tag.label do %>
+                <%= tag.radio_button %>
+                <%= tag.text %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <div>
+          <%= f.label :料理画像 %><br>
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+      </div>
+      <div class="col-7">
+        <div>
+          <%= f.label :ポイント %><br>
+          <%= f.text_area :point %>
+        </div>
+
+        <div>
+          <%= f.label :材料 %><br>
+          <%= f.text_area :food %>
+        </div>
+
+        <div>
+          <%= f.label :作り方 %><br>
+          <%= f.text_area :making %>
+        </div>
+      </div>
+
+       <%= f.submit 'レシピ投稿' %>
+
+<% end %>
+
+</div>
