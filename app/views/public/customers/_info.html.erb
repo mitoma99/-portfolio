@@ -13,7 +13,8 @@
     </tr>
   <tr>
     <th>自己紹介</th>
-    <td><%=safe_join(customer.introduction.split("\n"),tag(:br))%></td>
+    <!--%=safe_join(customer.introduction.split("\n"),tag(:br))%></t>-->
+    <td><%= customer.introduction %></td>
   </tr>
   <% if customer == current_customer %>
     <tr>
@@ -22,12 +23,12 @@
     </tr>
   <% end %>
   <tr>
-    <th></th>
-    <td>
-      <% if customer == current_customer %>
+     <% if customer == current_customer %>
+       <th></th>
+       <td>
         <%= link_to "編集する", edit_customer_path(customer),class: "btn" %>
-      <% end %>
-    </td>
+       </td>
+     <% end %>
   </tr>
 </table>
 
