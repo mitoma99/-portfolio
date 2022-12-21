@@ -4,13 +4,17 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-
   def after_sign_in_path_for(resource)
     tweets_path
   end
-
   def after_sign_out_path_for(resource)
     root_path
+  end
+
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    redirect_to tweets_path, notice: 'guestuserでログインしました。'
   end
 
   # GET /resource/sign_in

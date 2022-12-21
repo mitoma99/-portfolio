@@ -15,7 +15,7 @@
       <!--削除機能（投稿ユーザーのみ）-->
         <% if @tweet.customer == current_customer %>
         <td>
-          <%= link_to tweet_path(@tweet), method: :delete do %>
+          <%= link_to tweet_path(@tweet), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         </td>
@@ -65,7 +65,7 @@
         <!--削除機能（投稿ユーザーのみ）-->
         <% if comment.customer == current_customer %>
           <td>
-            <%= link_to tweet_comment_path(comment.tweet, comment), method: :delete do %>
+            <%= link_to tweet_comment_path(comment.tweet, comment), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
               <i class="fas fa-trash-alt"></i>
             <% end %>
           </td>

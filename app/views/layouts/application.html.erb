@@ -17,6 +17,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
 
+        <div class="navbar-brand p-3" href="/">
+          <%= link_to root_path do %>
+            <h3>赤ちゃんとの<br>
+            ひとこと日記</h3>
+          <% end %>
+        </div>
+
         <% if customer_signed_in? %>
           <div class="mr-5 mt-3">
             <p>
@@ -54,7 +61,11 @@
               <button type="button" class="btn btn-light btn-sm ">つぶやき一覧</button>
             <% end %>
         　</div>
-          <div>離乳食</div>
+          <div>
+            <%= link_to admin_babyfoods_path,class: 'nav-link text-light' do %>
+              <button type="button" class="btn btn-light btn-sm ">離乳食一覧</button>
+            <% end %>
+        　</div>
           <div>
             <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
               <button type="button" class="btn btn-light btn-sm">ログアウト</button>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:destroy]
     end
     resources :customers, only: [:index,:show,:destroy]
+    resources :babyfoods, only: [:index,:show,:destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -31,6 +32,11 @@ scope module: 'public' do
        get 'babyfoods' => 'customers#babyfoods'
     end
     resources :babyfoods, only: [:new,:create,:index,:show,:edit, :update,:destroy]
+
+    #ゲストログインのルート設定
+    devise_scope :customer do
+      post 'customers/guest_sign_in', to: 'sessions#guest_sign_in'
+    end
   end
 
 

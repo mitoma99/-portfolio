@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <table class="table">
+        <%= form_tag admin_babyfoods_path, method: :get, class: 'boards__searchForm' do %>
+          <thead>
+            <tr>
+              <th>ジャンル検索</th>
+            </tr>
+          </thead>
+          <tboby>
+            <% @tags.each do |tag| %>
+              <tr>
+                <div class="tag-box">
+                  <td><%= link_to tag.name,admin_babyfoods_path(name: tag.id) %></td>
+                </div>
+              </tr>
+            <% end %>
+              <tr>
+                <div class="tag-box">
+                  <td><%= link_to "全てのレシピ",admin_babyfoods_path %></td>
+                </div>
+              </tr>
+          </tboby>
+        </table>
+    </div>
+    <div class="col-8">
+      <h1>管理者：離乳食</h1>
+      <%= search_form_for @q, url: admin_babyfoods_path do |f| %>
+        <%= f.search_field :title_or_food_cont, class: 'form-control', placeholder: '検索ワード' %>
+        <%= f.submit '検索', class: 'btn btn-primary' %>
+      <% end %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>料理名</th>
+            <th>タグ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @babyfoods.each do |babyfood| %>
+            <tr>
+              <td><%= image_tag babyfood.get_image(50,50) %></td>
+              <td>
+              <%= link_to admin_babyfood_path(babyfood.id) do %>
+                <%= babyfood.title %>
+              <% end %>
+              </td>
+              <td><%= babyfood.tag.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% end %>
+  </div>
+</div>

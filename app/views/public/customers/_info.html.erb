@@ -23,11 +23,13 @@
     </tr>
   <% end %>
   <tr>
-     <% if customer == current_customer %>
-       <th></th>
-       <td>
-        <%= link_to "編集する", edit_customer_path(customer),class: "btn" %>
-       </td>
+     <% if customer == current_customer && customer.name != "gestcustomer" %>
+         <th></th>
+         <td>
+         <%= link_to edit_customer_path(customer),class: "btn btn-outline-secondary btn-block" do %>
+           <i class="fas fa-user-cog"></i>編集する
+           <% end %>
+         </td>
      <% end %>
   </tr>
 </table>
