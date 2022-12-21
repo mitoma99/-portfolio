@@ -1,6 +1,12 @@
 <div class="container">
   <h1>離乳食レシピ投稿</h1>
 
+  <p class="text-danger">
+    <% if @babyfood.errors.any? %>
+      <%= @babyfood.errors.count %>件が空欄または料理名が20文字以上です
+    <% end %>
+  </p>
+
   <%= form_with model: @babyfood, url: babyfood_path(@babyfood.id), method: :patch do |f| %>
     <div class="row">
       <div class="col-5">

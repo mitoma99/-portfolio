@@ -12,6 +12,11 @@ class Customer < ApplicationRecord
 
   has_one_attached :image
 
+  validates :name, presence: true, length: {minimum: 2, maximum: 10}
+  validates :nickname, presence: true, length: {minimum: 2, maximum: 10}
+  validates :introduction, length: {maximum: 30}
+  validates :email, presence: true
+
    def self.guest
     find_or_create_by!(name: 'gestcustomer' ,email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64

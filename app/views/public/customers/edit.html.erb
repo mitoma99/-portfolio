@@ -4,6 +4,14 @@
     <h1><%= @customer.name %>さんのページ編集</h1>
   </div>
 
+  <p class="text-danger">
+    <% if @customer.errors.any? %>
+      <%= @customer.errors.count %>件が空欄または<br>
+      名前・ニックネームが1文字以下・20文字以上、<br>
+      自己紹介が30文字以上になっています
+    <% end %>
+  </p>
+
   <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
 
      <div class="form-group row">

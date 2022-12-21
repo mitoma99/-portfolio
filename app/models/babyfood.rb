@@ -4,6 +4,11 @@ class Babyfood < ApplicationRecord
   has_one_attached :image
   belongs_to :tag
 
+  validates :title, presence: true, length: {maximum: 20}
+  validates :food, presence: true
+  validates :point, presence: true
+  validates :making, presence: true
+
   def get_image(width, height)
   unless image.attached?
     file_path = Rails.root.join('app/assets/images/default-image.jpeg')

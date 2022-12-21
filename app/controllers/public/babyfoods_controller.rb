@@ -6,8 +6,11 @@ class Public::BabyfoodsController < ApplicationController
   def create
     @babyfood=Babyfood.new(babyfood_params)
     @babyfood.customer_id=current_customer.id
-    @babyfood.save
-    redirect_to babyfoods_path
+    if @babyfood.save
+      redirect_to babyfoods_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -35,8 +38,11 @@ class Public::BabyfoodsController < ApplicationController
   def update
     @babyfood=Babyfood.find(params[:id])
     @babyfood.customer_id=current_customer.id
-    @babyfood.update(babyfood_params)
-    redirect_to babyfood_path(@babyfood.id)
+    if @babyfood.update(babyfood_params)
+      redirect_to babyfood_path(@babyfood.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

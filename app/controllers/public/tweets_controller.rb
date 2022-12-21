@@ -14,11 +14,14 @@ class Public::TweetsController < ApplicationController
   end
 
   def create
-    tweet=Tweet.new(tweet_params)
+    @tweet=Tweet.new(tweet_params)
     # つぶやきを会員に紐付け（ログインユーザー）
-    tweet.customer_id=current_customer.id
-    tweet.save
-    redirect_to tweets_path
+    @tweet.customer_id=current_customer.id
+    if @tweet.save
+      redirect_to tweets_path
+    else
+      render :new
+    end
   end
 
   def destroy
