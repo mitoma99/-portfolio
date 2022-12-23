@@ -1,5 +1,12 @@
 <div class>
-  <%= link_to "つぶやく", new_tweet_path,class: "btn btn-outline-warning btn-block" %>
+  <%= link_to new_tweet_path,class: "btn btn-outline-warning btn-block" do %>
+    <ul class="fa-ul">
+      <li>
+        <i class="fas fa-feather-alt"></i>
+        つぶやく
+      </li>
+    </ul>
+  <% end %>
 </div>
 
 <div class>
