@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
+     <%= form_tag babyfoods_path, method: :get, class: 'boards__searchForm' do %>
       <table class="table">
-        <%= form_tag babyfoods_path, method: :get, class: 'boards__searchForm' do %>
           <thead>
             <tr>
               <th>ジャンル検索</th>
@@ -23,13 +23,16 @@
               </tr>
           </tboby>
         </table>
+      　<% end %>
         <%= render 'public/customers/link', customer: current_customer %>
     </div>
     <div class="col-8">
       <h1>離乳食</h1>
       <%= search_form_for @q, url: babyfoods_path do |f| %>
-        <%= f.search_field :title_or_food_cont, class: 'form-control', placeholder: '検索ワード' %>
-        <%= f.submit '検索', class: 'btn btn-primary' %>
+        <div>
+          <%= f.search_field :title_or_food_cont, class: 'form-control', placeholder: '検索ワード' %>
+          <%= f.submit '検索', class: 'btn btn-primary' %>
+        </div>
       <% end %>
       <table class="table">
         <thead>
@@ -53,6 +56,5 @@
           <% end %>
         </tbody>
       </table>
-      <% end %>
   </div>
 </div>

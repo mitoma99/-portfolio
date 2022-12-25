@@ -1,6 +1,13 @@
 <div class="container">
-
-  <h1><%= @customer.name %>さんのページ</h1>
+  <div class="row">
+    <div class="col-6">
+      <h1><%= @customer.name %>さんのページ</h1>
+    </div>
+    <div class="col-6">
+      <button type="button" class="btn btn-secondary btn-lg" disabled>つぶやき</button>
+      <%= link_to "離乳食", customer_babyfoods_path(@customer.id),class: "btn btn-outline-warning btn-lg" %>
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-4">
@@ -9,9 +16,7 @@
     </div>
 
     <div class="col-7">
-      <!--つぶやき-->
-      <!--<!%= link_to "離乳食", customer_babyfoods_path(@customer.id),class: "btn" %>-->
-        <% @customer.tweets.each do |tweet| %>
+        <% @tweets.each do |tweet| %>
           <div class="card border-dark mb-3" style="max-width: 25rem;">
           <div class="card-header bg-transparent border-dark">
           <%= link_to customer_path(tweet.customer.id) do %>
