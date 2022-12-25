@@ -7,16 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #タグ名作成
-Tag.create([
-  { name: '離乳食初期(生後5~6ヶ月ごろ)'},
-  { name: '離乳食中期(生後7~8ヶ月ごろ)'},
-  { name: '離乳食後期(生後9~11ヶ月ごろ)'},
-  { name: '離乳食完了期(生後12~18か月ごろ)'},
-  ])
+# Tag.create([
+#   { name: '離乳食初期(生後5~6ヶ月ごろ)'},
+#   { name: '離乳食中期(生後7~8ヶ月ごろ)'},
+#   { name: '離乳食後期(生後9~11ヶ月ごろ)'},
+#   { name: '離乳食完了期(生後12~18か月ごろ)'},
+#   ])
 
-#管理者作成
-Admin.create!(
-  email: 'test@test',
-  password: 'testtest'
-  )
+# #管理者作成
+# Admin.create!(
+#   email: 'test@test',
+#   password: 'testtest'
+#   )
 
