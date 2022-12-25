@@ -12,8 +12,8 @@ class Customer < ApplicationRecord
 
   has_one_attached :image
 
-  validates :name, presence: true, length: {minimum: 2, maximum: 10}
-  validates :nickname, presence: true, length: {minimum: 2, maximum: 10}
+  validates :name, presence: true, length: {minimum: 2, maximum: 15}
+  validates :nickname, presence: true, length: {minimum: 2, maximum: 15}
   validates :introduction, length: {maximum: 30}
   validates :email, presence: true
 
