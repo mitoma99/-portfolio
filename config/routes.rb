@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     resources :tweets, only: [:index,:show,:destroy] do
       resources :comments, only: [:destroy]
     end
-    resources :customers, only: [:index,:show,:destroy]
+    resources :customers, only: [:index,:show,:destroy] do
+      get 'babyfoods' => 'customers#babyfoods'
+    end
     resources :babyfoods, only: [:index,:show,:destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

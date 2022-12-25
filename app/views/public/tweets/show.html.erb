@@ -27,34 +27,38 @@
         <%=safe_join(@tweet.content.split("\n"),tag(:br))%>
       </p>
     </div>
-    <div class="card-footer bg-transparent border-dark">
+    <div class="card-footer bg-transparent border-dark tweet-fooder">
+      <div class="d-flex flex-row bd-highlight mb-3">
       <!--コメント数表示-->
-      <%= link_to tweet_path(@tweet.id) do %>
-        <td>
-          <i class="far fa-comment"></i>
-          ：<%= @tweet.comments.count %>
-        </td>
-      <% end %>
+        <div class="mr-3">
+          <%= link_to tweet_path(@tweet.id) do %>
+            <td>
+              <i class="far fa-comment"></i>
+              ：<%= @tweet.comments.count %>
+            </td>
+          <% end %>
+        </div>
       <!--いいね数表示-->
-      <td>
-        <% if @tweet.favorited_by?(current_customer) %><!--いいねしている会員か確認-->
-          <p>
-            <%= link_to tweet_favorites_path(@tweet), method: :delete do %>
-              ♥<%= @tweet.favorites.count %>
+          <td>
+            <% if @tweet.favorited_by?(current_customer) %><!--いいねしている会員か確認-->
+              <p>
+                <%= link_to tweet_favorites_path(@tweet), method: :delete do %>
+                  ♥<%= @tweet.favorites.count %>
+                <% end %>
+              </p>
+            <% else %>
+              <p>
+                <%= link_to tweet_favorites_path(@tweet), method: :post do %>
+                  ♡<%= @tweet.favorites.count %>
+                <% end %>
+              </p>
             <% end %>
-          </p>
-        <% else %>
-          <p>
-            <%= link_to tweet_favorites_path(@tweet), method: :post do %>
-              ♡<%= @tweet.favorites.count %>
-            <% end %>
-          </p>
-        <% end %>
-      </td>
+          </td>
+        </div>
       <!--投稿日表示-->
-      <td><%= @tweet.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= @tweet.created_at.strftime('%Y/%m/%d') %></td>
+      </div>
     </div>
-  </div>
 
   <!--コメント一覧-->
   <% @tweet.comments.each do |comment| %>
@@ -91,3 +95,4 @@
         <%= f.submit "送信する" %>
       <% end %>
     </div>
+  </div>

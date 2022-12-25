@@ -1,10 +1,19 @@
 <div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h1>管理者側：<%= @customer.name %>さんの詳細</h1>
+    </div>
+    <div class="col-6">
+      <button type="button" class="btn btn-secondary btn-lg" disabled>つぶやき</button>
+      <%= link_to "離乳食", admin_customer_babyfoods_path(@customer.id),class: "btn btn-outline-warning btn-lg" %>
+    </div>
+  </div>
+
     <div class="row">
       <div class="col-4">
         <%= render 'public/customers/info', customer: @customer %>
       </div>
        <div class="col-7">
-      <h1>管理者：会員詳細</h1>
       <!--つぶやき-->
       <!--<!%= link_to "離乳食", customer_babyfoods_path(@customer.id),class: "btn" %>-->
         <% @customer.tweets.each do |tweet| %>
@@ -25,18 +34,22 @@
                 <%=safe_join(tweet.content.split("\n"),tag(:br))%>
               </p>
             </div>
-            <div class="card-footer bg-transparent border-dark">
-            <!--コメント数表示-->
-              <%= link_to admin_tweet_path(tweet.id) do %>
+            <div class="card-footer bg-transparent border-dark tweet-fooder">
+              <div class="d-flex flex-row bd-highlight mb-3">
+              <!--コメント数表示-->
+                <div class="mr-3">
+                  <%= link_to admin_tweet_path(tweet.id) do %>
+                    <td>
+                      <i class="far fa-comment"></i>
+                      ：<%= tweet.comments.count %>
+                    </td>
+                  <% end %>
+                </div>
+                <!--いいね表示-->
                 <td>
-                  <i class="far fa-comment"></i>
-                  ：<%= tweet.comments.count %>
+                  ♡<%= tweet.favorites.count %>
                 </td>
-              <% end %>
-             <!--いいね表示-->
-              <td>
-                ♡<%= tweet.favorites.count %>
-              </td>
+              </div>
               <!--投稿日表示-->
               <td><%= tweet.created_at.strftime('%Y/%m/%d') %></td>
             </div>

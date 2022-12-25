@@ -1,0 +1,43 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-6">
+      <h1>管理者側：<%= @customer.name %>さんの詳細</h1>
+    </div>
+    <div class="col-6">
+      <%= link_to "つぶやき", admin_customer_path(@customer.id),class: "btn btn-outline-warning btn-lg" %>
+      <button type="button" class="btn btn-secondary btn-lg" disabled>離乳食</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <%= render 'public/customers/info', customer: @customer %>
+    </div>
+
+    <div class="col-7">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>料理名</th>
+            <th>タグ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @babyfoods.each do |babyfood| %>
+            <tr>
+              <td><%= image_tag babyfood.get_image(50,50) %></td>
+              <td>
+              <%= link_to babyfood_path(babyfood.id) do %>
+                <%= babyfood.title %>
+              <% end %>
+              </td>
+              <td><%= babyfood.tag.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
