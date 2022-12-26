@@ -1,11 +1,13 @@
 <div class="container">
   <h3><%= @babyfood.title %></h3>
-  <div><%= link_to "編集する", edit_babyfood_path(@babyfood),class: "btn　mt-4 mb-3" %></div>
-  <td>
-    <%= link_to babyfood_path(@babyfood), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-      <i class="fas fa-trash-alt"></i>
-    <% end %>
-  </td>
+  <% if @babyfood.customer == current_customer %>
+    <div><%= link_to "編集する", edit_babyfood_path(@babyfood),class: "btn　mt-4 mb-3" %></div>
+    <td>
+      <%= link_to babyfood_path(@babyfood), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
+    </td>
+  <% end %>
   <div class="row">
     <div class="col-5 mt-4 mb-3">
       <td><%= image_tag @babyfood.get_image(250,250) %></td>
