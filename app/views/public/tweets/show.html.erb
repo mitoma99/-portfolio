@@ -78,7 +78,7 @@
       </div>
       <div class="card-body text-dark">
         <p class="card-text">
-          <%= comment.message %>
+          <%=safe_join(comment.message.split("\n"),tag(:br))%>
         </p>
       </div>
 

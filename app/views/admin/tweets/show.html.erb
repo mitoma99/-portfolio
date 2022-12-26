@@ -21,7 +21,7 @@
            </div>
            <div class="card-body text-dark">
              <p class="card-text">
-               <%= @tweet.content %>
+               <%=safe_join(@tweet.content.split("\n"),tag(:br))%>
              </p>
            </div>
            <div class="card-footer bg-transparent border-dark tweet-fooder">
@@ -59,7 +59,7 @@
              </div>
              <div class="card-body text-dark">
                <p class="card-text">
-                 <%= comment.message %>
+                 <%=safe_join(comment.message.split("\n"),tag(:br))%>
                </p>
              </div>
 

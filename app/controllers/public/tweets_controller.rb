@@ -10,7 +10,7 @@ class Public::TweetsController < ApplicationController
   end
 
   def index
-    @tweets=Tweet.all.order(created_at: :desc)
+    @tweets=Tweet.all.order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def create
