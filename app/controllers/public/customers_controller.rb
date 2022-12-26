@@ -3,11 +3,14 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    #会員の詳細画面につぶやきを新しい順に表示するため
     @tweets = @customer.tweets.order(created_at: :desc).page(params[:page]).per(4)
   end
-
+  
+  #会員詳細画面を２ページに分けるため
   def babyfoods
     @customer = Customer.find(params[:customer_id])
+    #会員詳細画面に離乳食のレシピを新しい順に表示するため
     @babyfoods = @customer.babyfoods.order(created_at: :desc).page(params[:page]).per(7)
   end
 
@@ -29,7 +32,8 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:name, :nickname, :introduction, :email, :image)
   end
-
+  
+  #ゲストユーザーのため
   def ensure_guest_customer
     @customer = Customer.find(params[:id])
     if @customer.name == "gestcustomer"

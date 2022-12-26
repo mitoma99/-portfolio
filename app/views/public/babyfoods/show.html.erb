@@ -1,5 +1,6 @@
 <div class="container">
   <h3><%= @babyfood.title %></h3>
+  <!--投稿した会員にしか編集と削除を表示しない-->
   <% if @babyfood.customer == current_customer %>
     <div><%= link_to "編集する", edit_babyfood_path(@babyfood),class: "btn　mt-4 mb-3" %></div>
     <td>

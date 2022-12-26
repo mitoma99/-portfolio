@@ -5,6 +5,7 @@
       <h1>管理者側：<%= @customer.name %>さんの詳細</h1>
     </div>
     <div class="col-6">
+      <!--会員のつぶやきと離乳食を表示を分けるためのページ遷移（会員ページを２ページに分ける）離乳食は遷移指定なし-->
       <%= link_to "つぶやき", admin_customer_path(@customer.id),class: "btn btn-outline-warning btn-lg" %>
       <button type="button" class="btn btn-secondary btn-lg" disabled>離乳食</button>
     </div>
@@ -38,6 +39,7 @@
           <% end %>
         </tbody>
       </table>
+      <!--ページネーション-->
       <%= paginate @babyfoods %>
     </div>
   </div>

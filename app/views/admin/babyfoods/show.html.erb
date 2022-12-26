@@ -1,5 +1,6 @@
 <div class="container">
   <h3><%= @babyfood.title %></h3>
+  <!--管理者側の削除-->
   <td>
     <%= link_to admin_babyfood_path(@babyfood), method: :delete, "data-confirm" => "本当に削除しますか？"  do %>
       <i class="fas fa-trash-alt"></i>
@@ -25,6 +26,7 @@
           <tr>
             <tr>
               <td><%= @babyfood.tag.name %></td><br>
+              <!--投稿者の会員ページへの遷移指定
               <td>レシピ投稿：
                 <%= link_to admin_customer_path(@babyfood.customer.id) do %>
               <td><%= @babyfood.customer.nickname %></td>

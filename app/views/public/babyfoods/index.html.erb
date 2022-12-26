@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
+      <!--ジャンル検索-->
      <%= form_tag babyfoods_path, method: :get, class: 'boards__searchForm' do %>
       <table class="table">
           <thead>
@@ -28,6 +29,7 @@
     </div>
     <div class="col-8">
       <h1>離乳食</h1>
+      <!--検索フォーム（料理名・材料）-->
       <%= search_form_for @q, url: babyfoods_path do |f| %>
         <div>
           <%= f.search_field :title_or_food_cont, class: 'form-control', placeholder: '検索ワード' %>
@@ -60,6 +62,7 @@
           <% end %>
         </tbody>
       </table>
+      <!--ページネーション-->
       <%= paginate @babyfoods %>
   </div>
 </div>

@@ -16,6 +16,7 @@
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <div class="d-flex flex-row bd-highlight mb-3">
+          <!--ロゴの表示-->
            <div class="navbar-brand p-3 float-left" href="/">
              <%= link_to root_path do %>
                <%= image_tag('baby2.png') %>
@@ -23,7 +24,7 @@
            </div>
           </div>
       <ul class="navbar-nav ml-auto ">
-
+        <!--会員側のヘッダー-->
         <% if customer_signed_in? %>
           <div class="mr-5 mt-3">
             <p>
@@ -31,6 +32,7 @@
             </p>
           </div>
           <li class="nav-item ">
+            <!--ログインしている会員のページに遷移-->
             <%= link_to customer_path(current_customer.id),class: 'nav-link text-secondary' do %>
               <ul class="fa-ul">
               <li>
@@ -78,6 +80,7 @@
             </ul>
             <% end %>
           </li>
+        <!--管理者側のヘッダー-->
         <% elsif admin_signed_in? %>
           <li class="nav-item">
             <%= link_to admin_customers_path,class: 'nav-link text-secondary' do %>
@@ -128,6 +131,7 @@
             <% end %>
           </li>
         <% else %>
+        <!--会員側にも管理者側にもログインしていない時のヘッダー-->
           <li class="nav-item">
             <%= link_to new_customer_registration_path,class: 'nav-link text-secondary' do %>
               <ul class="fa-ul">

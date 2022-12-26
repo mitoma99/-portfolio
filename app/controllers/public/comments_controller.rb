@@ -1,7 +1,9 @@
 class Public::CommentsController < ApplicationController
 
   def create
+   #つぶやきにコメントを紐づけるため
    tweet=Tweet.find(params[:tweet_id])
+   #つぶやきにコメントを投稿するため
    comment=current_customer.comments.new(comment_params)
    comment.tweet_id=tweet.id
    comment.save
