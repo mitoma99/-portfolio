@@ -21,15 +21,16 @@
 離乳食をレシピを検索する時、離乳食のレシピを投稿する時
 
 ## 設計書
-
+テーブル定義書：https://docs.google.com/spreadsheets/d/13EhzULqpk_YwGt-R7GBinyF-sElWjJcK2Aaxxhh5yPc/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- 言語：HTML,CSS,JavaScript,Ruby 3.1.2,Rails 6.1.7,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
 ## 使用素材
 - 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+- 離乳食レシピ参照
+- 岩手県二戸市のホームページ：https://www.city.ninohe.lg.jp/info/2961
