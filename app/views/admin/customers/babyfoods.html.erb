@@ -30,7 +30,7 @@
             <tr>
               <td><%= image_tag babyfood.get_image(50,50) %></td>
               <td>
-              <%= link_to babyfood_path(babyfood.id) do %>
+              <%= link_to admin_babyfood_path(babyfood.id) do %>
                 <%= babyfood.title %>
               <% end %>
               </td>
