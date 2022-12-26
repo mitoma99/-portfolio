@@ -25,6 +25,7 @@
         <p class="card-text py-3 px-3">
           <tr>
             <tr>
+              <td><%= @babyfood.tag.name %></td><br>
               <td>レシピ投稿：
                 <%= link_to customer_path(@babyfood.customer.id) do %>
               <td><%= @babyfood.customer.nickname %></td>
